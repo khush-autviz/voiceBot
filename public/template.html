@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="visibleButton" style="cursor: pointer">
+      <img src="http://localhost:8000/images/voice-bot.png" alt="" />
+    </button>
+    <div id="mainContainer">
+      <div style="display: flex; justify-content: space-between">
+        <p style="font-weight: 700">AutBot</p>
+        <p id="callEndedText" style="color: red; font-weight: 500">
+          Call Ended
+        </p>
+        <button id="crossButton"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="transcriptContainer"></div>
+      <div>
+        <button id="startButton">start</button>
+        <button id="muteButton">mute</button>
+        <button id="endButton">end</button>
+      </div>
+    </div>
+  </body>
+</html>
