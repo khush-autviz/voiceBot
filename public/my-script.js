@@ -31,7 +31,7 @@ var sdk,
     const cssContent = await response.text();
 
     const style = document.createElement("style");
-    style.textContent = cssContent; // Use textContent instead of innerHTML
+    style.textContent = cssContent;
     document.head.appendChild(style);
 
     console.log("CSS Loaded Successfully!");
@@ -58,7 +58,7 @@ var sdk,
   // visble button click event
   visibleButton.addEventListener("click", () => {
     mainContainer.style.display = "block";
-    visibleButton.style.display = "none";
+    // visibleButton.style.display = "none";
   });
 
   //cross button click event
@@ -149,9 +149,11 @@ var sdk,
   muteButton.addEventListener("click", () => {
     if (!isMuted) {
       sdk.mute();
+      muteButton.innerHTML = `<i class="fa-solid fa-microphone-slash"></i>`;
       isMuted = true;
     } else {
       sdk.unmute();
+      muteButton.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
       isMuted = false;
     }
   });
