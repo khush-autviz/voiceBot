@@ -3,11 +3,29 @@
   position: fixed;
   right: 0;
   top: 0;
-  width: 300px;
+  width: 50%;
   height: 100%;
+  padding: 20px;
 }
 
 #visibleButton {
   height: 60px;
   width: 60px;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  background-color: aquamarine;
+  border-radius: 20px;
+}
+
+.widgetButtons {
+  background-color: aquamarine;
+  width: 100px;
+  padding: 5px 0;
+}
+
+#transcriptContainer {
+  margin-top: 1%;
+  height: 85%;
+  background-color: aliceblue;
 }

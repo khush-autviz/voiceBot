@@ -15,13 +15,23 @@
         <p id="callEndedText" style="color: red; font-weight: 500">
           Call Ended
         </p>
-        <button id="crossButton"><i class="fa-solid fa-xmark"></i></button>
+        <button id="crossButton" style="cursor: pointer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
-      <div id="transcriptContainer"></div>
-      <div>
-        <button id="startButton"><i class="fa-solid fa-phone"></i></button>
-        <button id="muteButton"><i class="fa-solid fa-microphone"></i></button>
-        <button id="endButton"><i class="fa-solid fa-phone-slash"></i></button>
+      <div id="transcriptContainer">
+        <img src="http://localhost:8000/images/chat.png" alt="" />
+      </div>
+      <div style="display: flex; justify-content: space-around">
+        <button class="widgetButtons" id="startButton">
+          <i class="fa-solid fa-phone"></i>
+        </button>
+        <button class="widgetButtons" id="muteButton">
+          <i class="fa-solid fa-microphone"></i>
+        </button>
+        <button class="widgetButtons" id="endButton">
+          <i class="fa-solid fa-phone-slash"></i>
+        </button>
       </div>
     </div>
   </body>

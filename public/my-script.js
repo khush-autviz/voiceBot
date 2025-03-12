@@ -1,6 +1,7 @@
 var sdk,
   transcript = [],
-  isMuted = false;
+  isMuted = false,
+  callFlag = 0;
 
 (async () => {
   //RETELL
@@ -29,12 +30,9 @@ var sdk,
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
     const cssContent = await response.text();
-
     const style = document.createElement("style");
     style.textContent = cssContent;
     document.head.appendChild(style);
-
-    console.log("CSS Loaded Successfully!");
   } catch (error) {
     console.error("Error loading CSS content:", error);
   }
@@ -44,8 +42,8 @@ var sdk,
   var muteButton = document.getElementById("muteButton");
   var endButton = document.getElementById("endButton");
   var mainContainer = document.getElementById("mainContainer");
-  var visibleButton = document.getElementById("visibleButton");
   var callEndedText = document.getElementById("callEndedText");
+  var visibleButton = document.getElementById("visibleButton");
   var crossButton = document.getElementById("crossButton");
   var transcriptContainer = document.getElementById("transcriptContainer");
 
@@ -53,12 +51,15 @@ var sdk,
   muteButton.disabled = true;
   endButton.disabled = true;
   callEndedText.style.display = "none";
-  //   mainContainer.style.display = "none";
+  // mainContainer.style.display = "none";
 
   // visble button click event
   visibleButton.addEventListener("click", () => {
     mainContainer.style.display = "block";
-    // visibleButton.style.display = "none";
+    visibleButton.style.display = "none";
+    if (!callFlag) {
+      handleCall();
+    }
   });
 
   //cross button click event
@@ -68,11 +69,39 @@ var sdk,
   });
 
   // start click event
-  startButton.addEventListener("click", async () => {
+  startButton.addEventListener("click", handleCall);
+
+  //mute click event
+  muteButton.addEventListener("click", () => {
+    if (!isMuted) {
+      sdk.mute();
+      muteButton.innerHTML = `<i class="fa-solid fa-microphone-slash"></i>`;
+      isMuted = true;
+    } else {
+      sdk.unmute();
+      muteButton.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
+      isMuted = false;
+    }
+  });
+
+  // end click event
+  endButton.addEventListener("click", () => {
+    sdk.stopCall();
+    callEndedText.style.display = "block";
+    startButton.disabled = false;
+    muteButton.disabled = true;
+    endButton.disabled = true;
+  });
+
+  //handle call
+
+  async function handleCall() {
+    callFlag = 1;
     startButton.disabled = true;
     muteButton.disabled = false;
     endButton.disabled = false;
     callEndedText.style.display = "none";
+    transcriptContainer.innerHTML = "";
 
     try {
       const response = await fetch("http://localhost:8000/call", {
@@ -143,27 +172,5 @@ var sdk,
     } catch (error) {
       console.error("Error:", error);
     }
-  });
-
-  //mute click event
-  muteButton.addEventListener("click", () => {
-    if (!isMuted) {
-      sdk.mute();
-      muteButton.innerHTML = `<i class="fa-solid fa-microphone-slash"></i>`;
-      isMuted = true;
-    } else {
-      sdk.unmute();
-      muteButton.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
-      isMuted = false;
-    }
-  });
-
-  // end click event
-  endButton.addEventListener("click", () => {
-    sdk.stopCall();
-    callEndedText.style.display = "block";
-    startButton.disabled = false;
-    muteButton.disabled = true;
-    endButton.disabled = true;
-  });
+  }
 })();
