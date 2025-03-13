@@ -45,6 +45,7 @@ var sdk,
   var callEndedText = document.getElementById("callEndedText");
   var visibleButton = document.getElementById("visibleButton");
   var crossButton = document.getElementById("crossButton");
+  var agentGif = document.getElementById("agentGif");
   var transcriptContainer = document.getElementById("transcriptContainer");
 
   //default settings
@@ -125,6 +126,26 @@ var sdk,
 
       sdk.startCall(demoStartCallConfig).then(() => {
         console.log("Call started successfully");
+
+        // Agent speaking
+        sdk.on("agent_start_talking", () => {
+          agentGif.play();
+        });
+
+        sdk.on("agent_stop_talking", (e) => {
+          // console.log("stopp ");
+          // console.log("atalk", sdk.isAgentTalking);
+
+          // setTimeout(() => {
+          agentGif.pause();
+          // }, 2000);
+        });
+
+        sdk.on("audio", (audio) => {
+          console.log("audio", audio);
+        });
+
+        //Trasnscript
         sdk.on("update", (update) => {
           {
             if (update.transcript.length < 5) {
@@ -156,8 +177,13 @@ var sdk,
               }
             }
 
-            console.log("Updated transcript:", transcript);
+            // console.log("Updated transcript:", transcript);
 
+            // if (!sdk.isAgentTalking) {
+            //   setTimeout(() => {
+            //     agentGif.pause();
+            //   }, 1000);
+            // }
             transcriptContainer.innerHTML = "";
 
             transcript.forEach((item) => {
