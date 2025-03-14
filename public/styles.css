@@ -1,13 +1,293 @@
-#mainContainer {
-  background-color: white;
+/* new added style */
+
+.main-btn {
   position: fixed;
-  right: 0;
-  top: 0;
-  width: 300px;
-  height: 100%;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+  border: 0;
+  border-radius: 99rem;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#visibleButton {
-  height: 60px;
-  width: 60px;
+
+#mainContainer {
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  z-index: 999;
+  right: 20px;
+  top: 20px;
+  width: 640px;
+  height: 100%;
+  overflow: hidden;
+  top: 20px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  max-height: calc(100vh - 156px);
+  padding: 18px 22px;
+}
+
+/* gradient  */
+.gradientBody {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+}
+
+.mainContainer-wrapper {
+  .bot-heading {
+    font-size: 20px;
+    z-index: 10;
+    font-weight: 600;
+    position: relative;
+  }
+}
+
+.agentNchat-wrapper {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.agent-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-direction: column;
+  margin-top: 35px;
+
+}
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.botImg-wrapper {
+  border-radius: 99rem;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  background: #fff;
+  overflow: hidden;
+  border: 1px solid #262626;
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+.rippleEffect {
+  animation: ripple .9s linear infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(104, 80, 255, 0.3),
+      0 0 0 .4em rgba(171, 105, 254, 0.3),
+      0 0 0 .6em rgba(171, 105, 254, 0.3),
+      0 0 0 1.8em rgba(171, 105, 254, 0.3);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0.5em rgba(104, 80, 255, 0.3),
+      0 0 0 0.6em rgba(171, 105, 254, 0.3),
+      0 0 0 1.6em rgba(171, 105, 254, 0.3),
+      0 0 0 2em rgba(171, 105, 254, 0);
+  }
+}
+
+
+#startButton {
+  width: 54px;
+  border: 0;
+  height: 54px;
+  font-size: 21px;
+  border-radius: 99rem;
+  overflow: hidden;
+  background: rgba(110, 194, 7, 0.3);
+  border-radius: 999px;
+  color: #6EC207;
+  cursor: pointer;
+}
+
+#muteButton {
+  width: 54px;
+  height: 54px;
+  border: 0;
+  font-size: 23px;
+  border-radius: 99rem;
+  overflow: hidden;
+  background: rgba(86, 104, 231, .2);
+  border-radius: 999px;
+  color: #5668E7;
+  cursor: pointer;
+}
+
+#endButton {
+  width: 54px;
+  height: 54px;
+  font-size: 20px;
+  border: 0;
+  background: rgba(255, 0, 0, 0.1);
+  border-radius: 99rem;
+  color: #FF0000;
+  cursor: pointer;
+}
+
+/* agentContainer */
+.agentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.agentNameNprofile {
+
+  /* Emma Watson */
+  h4 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    color: #000000;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* HR Recruiter */
+  p {
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #000000;
+  }
+}
+
+.transcript-wrapper {
+  max-height: calc(100vh - 223px);
+  overflow-y: auto;
+  padding: 0 20px;
+}
+
+#transcriptContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .agent {
+    display: flex;
+    align-items: start;
+    gap: 8.8px;
+
+    .imgContainer {
+      width: 26px;
+      overflow: hidden;
+      border-radius: 99rem;
+      background: #6850FF;
+      height: 26px;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        padding-top: 6px;
+      }
+
+    }
+
+    .msgContainer {
+      background: #6850FF;
+      color: #fff;
+      margin-right: auto;
+      margin-left: 0;
+      color: #fff;
+      padding: 8px;
+      position: relative;
+      border-radius: 0 5.22px 5.22px 5.22px;
+      max-width: 90%;
+      width: fit-content;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -8px;
+        top: 0px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABySURBVHgBndC7DYAwDATQM4oIY7AKG8AG0DEOJWOETdiAjJCSLiQCGoTzO8mNraeTTHNvWwAHMkKEsUJhSqCWFlsu1G66RZFJhgTsHq2KPIZIRfJpenfRxj8UhRyKQc2hIHSHgUM+ogHMCUzfQ32/ns0FgDofSEIMKtMAAAAASUVORK5CYII=) no-repeat center center / contain;
+        width: 13.06px;
+        height: 10.44px;
+        transform: scaleX(-1);
+        z-index: 9;
+      }
+    }
+  }
+
+  .user {
+    display: flex;
+    align-items: start;
+    flex-direction: row-reverse;
+    gap: 8.8px;
+
+    .msgContainer {
+      background: #AB69FE;
+      color: #fff;
+      margin-right: 0;
+      margin-left: auto;
+      color: #fff;
+      padding: 8px;
+      position: relative;
+      border-radius: 5.22px 0 5.22px 5.22px;
+      max-width: 90%;
+      width: fit-content;
+
+      &::before {
+        content: '';
+        position: absolute;
+        right: -8px;
+        top: 0px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAYAAABPhbxiAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACDSURBVHgBnc+xDYMwEIXh916skDKrZARGSJEiXdIxDh10UDMNIzACJRJIRlfQIEAcf2FZd/okm002/UhVcPQpRJF84kIKiWqCHZzpnbMfI1Ivlh3fkp0Xa7kYviV4gWxd0LJnhzvSM1jrwVmsreGCj/6svYXhGPHf2wccFB5ox4GbeAaawSK2ufzt7wAAAABJRU5ErkJggg==) no-repeat center center / contain;
+        width: 13.06px;
+        height: 10.44px;
+        transform: scaleX(-1);
+        z-index: 9;
+      }
+    }
+  }
+}
+
+.scrollNew::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scrollNew::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px grey;  */
+  border-radius: 10px;
+  background-color: #D9D9D9;
+}
+
+/* Handle */
+.scrollNew::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 10px;
 }

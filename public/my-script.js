@@ -1,6 +1,7 @@
 var sdk,
   transcript = [],
-  isMuted = false;
+  isMuted = false
+containerOpened = false;
 
 (async () => {
   //RETELL
@@ -46,26 +47,33 @@ var sdk,
   var mainContainer = document.getElementById("mainContainer");
   var visibleButton = document.getElementById("visibleButton");
   var callEndedText = document.getElementById("callEndedText");
-  var crossButton = document.getElementById("crossButton");
+  // var crossButton = document.getElementById("crossButton");
   var transcriptContainer = document.getElementById("transcriptContainer");
 
   //default settings
   muteButton.disabled = true;
   endButton.disabled = true;
   callEndedText.style.display = "none";
-  //   mainContainer.style.display = "none";
+  // mainContainer.style.display = "none";
 
   // visble button click event
   visibleButton.addEventListener("click", () => {
-    mainContainer.style.display = "block";
+    if (!containerOpened) {
+      mainContainer.style.display = "block";
+      containerOpened = true;
+    }
+    else {
+      mainContainer.style.display = "none";
+      containerOpened = false;
+    }
     // visibleButton.style.display = "none";
   });
 
   //cross button click event
-  crossButton.addEventListener("click", () => {
-    mainContainer.style.display = "none";
-    visibleButton.style.display = "block";
-  });
+  // crossButton.addEventListener("click", () => {
+  //   mainContainer.style.display = "none";
+  //   visibleButton.style.display = "block";
+  // });
 
   // start click event
   startButton.addEventListener("click", async () => {
@@ -130,11 +138,15 @@ var sdk,
             console.log("Updated transcript:", transcript);
 
             transcriptContainer.innerHTML = "";
-
             transcript.forEach((item) => {
               const div = document.createElement("div");
-              div.classList.add("item");
-              div.innerHTML = `<strong>${item.role}</strong>: ${item.content}`;
+              div.classList.add(item.role === "agent" ? "agent" : "user");
+              div.innerHTML = `
+              <div class='imgContainer'>
+              <img src='${item.role === "agent" ? 'http://localhost:8000/images/agent.png' : 'http://localhost:8000/images/user.png'}' alt='...' />
+              </div>
+              
+              <div class='msgContainer'>${item.content}</div>`;
               transcriptContainer.appendChild(div);
             });
           }
@@ -149,11 +161,11 @@ var sdk,
   muteButton.addEventListener("click", () => {
     if (!isMuted) {
       sdk.mute();
-      muteButton.innerHTML = `<i class="fa-solid fa-microphone-slash"></i>`;
+      muteButton.innerHTML = `< i class= "fa-solid fa-microphone-slash" ></ > `;
       isMuted = true;
     } else {
       sdk.unmute();
-      muteButton.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
+      muteButton.innerHTML = `< i class= "fa-solid fa-microphone" ></ > `;
       isMuted = false;
     }
   });

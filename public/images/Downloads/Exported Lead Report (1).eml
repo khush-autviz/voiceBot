@@ -1,0 +1,109 @@
+Received: from MA0P287MB0762.INDP287.PROD.OUTLOOK.COM (2603:1096:a01:ba::13)
+ by PN3P287MB2652.INDP287.PROD.OUTLOOK.COM with HTTPS; Wed, 8 Jan 2025
+ 11:56:29 +0000
+Received: from PN3PR01CA0072.INDPRD01.PROD.OUTLOOK.COM (2603:1096:c01:99::19)
+ by MA0P287MB0762.INDP287.PROD.OUTLOOK.COM (2603:1096:a01:ba::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8335.11; Wed, 8 Jan
+ 2025 11:56:28 +0000
+Received: from PN1PEPF000062BB.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:c01:99:cafe::bd) by PN3PR01CA0072.outlook.office365.com
+ (2603:1096:c01:99::19) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8335.10 via Frontend Transport; Wed,
+ 8 Jan 2025 11:56:28 +0000
+Authentication-Results: spf=pass (sender IP is 76.223.180.18)
+ smtp.mailfrom=ap-south-1.amazonses.com; dkim=pass (signature was verified)
+ header.d=zopoxo.com;dmarc=bestguesspass action=none
+ header.from=zopoxo.com;compauth=pass reason=109
+Received-SPF: Pass (protection.outlook.com: domain of ap-south-1.amazonses.com
+ designates 76.223.180.18 as permitted sender)
+ receiver=protection.outlook.com; client-ip=76.223.180.18;
+ helo=c180-18.smtp-out.ap-south-1.amazonses.com; pr=C
+Received: from c180-18.smtp-out.ap-south-1.amazonses.com (76.223.180.18) by
+ PN1PEPF000062BB.mail.protection.outlook.com (10.167.242.7) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8335.7
+ via Frontend Transport; Wed, 8 Jan 2025 11:56:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=pt7njfywshmezl7jb5tqa5ee525nkacg; d=zopoxo.com; t=1736337388;
+	h=MIME-Version:From:To:Date:Subject:Content-Type:Content-Transfer-Encoding:Message-ID;
+	bh=H/UytIrjiL8FFPIORRKL4E/nWUPuls4LltLpAwrFFeI=;
+	b=RiITlzUW5tCo1xrgddxzCoqmgaYTkGb02dlsNWjOUjVWmlPPqBOikesjxnYwRRhW
+	jxYUgWbULxjFkwD/VLdfDEYHA111rijB5N+0+ZoA0SxnUr9ASoqnuiDQm78bhgjhb9i
+	OmGWJIhMaW1Gp0ULpgxHh3C/yxlrMFIfwDOcd0Rg=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=zpkik46mrueu52d3326ufxxchortqmoc; d=amazonses.com; t=1736337388;
+	h=MIME-Version:From:To:Date:Subject:Content-Type:Content-Transfer-Encoding:Message-ID:Feedback-ID;
+	bh=H/UytIrjiL8FFPIORRKL4E/nWUPuls4LltLpAwrFFeI=;
+	b=jL/IC0f8dzEEv+6/edlhrV4zgFypDVFDcxtqW1rtOrGy+OPfNDHur6osjLdUwWnx
+	OKSkqVQhRNBJgAEF7xwnx9M9xOdUSZzxVJNtbmjwzPGjEJ35MtMMIQkA9Ep67ah6ctA
+	zvXW7oT2n172yqDGTuSTz5SRsPC7a4e4DfxHNqKc=
+From: Autviz AI Agent <support@zopoxo.com>
+To: shivangi.rana@zopoxo.com
+Date: Wed, 8 Jan 2025 11:56:28 +0000
+Subject: Exported Lead Report
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Message-ID: <0109019445c5f1f9-7e112452-2aaf-47f5-8cb8-4813caf2b27d-000000@ap-south-1.amazonses.com>
+Feedback-ID: ::1.ap-south-1.KvjO4jwWvzpl/kZrz6xrX7CUGI+VXH1nEantiyFzgIk=:AmazonSES
+X-SES-Outgoing: 2025.01.08-76.223.180.18
+Return-Path: 0109019445c5f1f9-7e112452-2aaf-47f5-8cb8-4813caf2b27d-000000@ap-south-1.amazonses.com
+X-MS-Exchange-Organization-ExpirationStartTime: 08 Jan 2025 11:56:28.4758
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 685b2f9e-dcd0-4299-59c5-08dd2fdb7c36
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: a5efa507-59b9-47b6-b24b-13b2a380ea41:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PN1PEPF000062BB:EE_|MA0P287MB0762:EE_|PN3P287MB2652:EE_
+X-MS-Exchange-Organization-AuthSource: PN1PEPF000062BB.INDPRD01.PROD.OUTLOOK.COM
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 685b2f9e-dcd0-4299-59c5-08dd2fdb7c36
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:13230040|32142699015|8096899003;
+X-Forefront-Antispam-Report: CIP:76.223.180.18;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:c180-18.smtp-out.ap-south-1.amazonses.com;PTR:c180-18.smtp-out.ap-south-1.amazonses.com;CAT:NONE;SFS:(13230040)(32142699015)(8096899003);DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jan 2025 11:56:28.4602
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 685b2f9e-dcd0-4299-59c5-08dd2fdb7c36
+X-MS-Exchange-CrossTenant-Id: a5efa507-59b9-47b6-b24b-13b2a380ea41
+X-MS-Exchange-CrossTenant-AuthSource: PN1PEPF000062BB.INDPRD01.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MA0P287MB0762
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.4120219
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8335.010
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097)(140003);
+X-Microsoft-Antispam-Message-Info:
+	=?us-ascii?Q?OcvWZi7983ZdT8LHP6Obop3zszua/ITkHK08Wq818sVyl1Lg3eKiGIO1bcnW?=
+ =?us-ascii?Q?IMOORR/9+DhIs6qeIo6eGYPYyIitm0WtUJY66ykCgrmii/NsSgwgtrI+TqYe?=
+ =?us-ascii?Q?eMvCjd+xn+Z7rmGpneqgcupBH+NikrDt62Rij/KLynheO8X3i0NLGMQTwWE7?=
+ =?us-ascii?Q?Qa8yph/Rmyr8+tADlnA/6GYJuk0SVz0iM/zFmeUH7NTTapiCNpygaV90Dz1G?=
+ =?us-ascii?Q?/1LpcPFQpLA6Qb67/+2ktdgDpzBvd3WriXzKGJNnIzl/7Rfb9I2oXNbpVPNl?=
+ =?us-ascii?Q?8jpuCUaWdHsc1dzNaC74KtVPOiW1rrX3paEofbJ4aTTPfzP0tSEk79wu7AIT?=
+ =?us-ascii?Q?bdvvkqYcWhMQChJGHFft/og6D0pGbK7RMAoVoWN9aspBS24NMLVnqW1lPza0?=
+ =?us-ascii?Q?dhZr3ojskwKnvqRXim5Us6bhM8Efqc5rSyTmHYjWah4MnOqXTuCxfy2UipbB?=
+ =?us-ascii?Q?IbVu+Di1WLvVnv8X3L43Xe5LlEkSTd5io9HG7eJ4BiNYnV4Q+6EIz6TNOR/s?=
+ =?us-ascii?Q?8wbzJkoY6j/2dfwK2OWlq4CQ+8m7EQF6PrSBiHtP6QfwoV+7HRLa0x6YsTx3?=
+ =?us-ascii?Q?+Jzq0z5Gik5yf7rjchvLANbdhnkQn0pEjJvUGU/rgw3SGABRUla0uMpmvK/s?=
+ =?us-ascii?Q?uHmiRG8Z/71tCFsgIwEChIdPHhIcslCuXs5GZETQ5GtVVo/4KH1/Fy0lmsm8?=
+ =?us-ascii?Q?LQyrxMWUPc5vdhJWH8uyyaL8ylC8gMaH7CDKI+DNVowLI6hFdifG3ZydWfr8?=
+ =?us-ascii?Q?jnvU4+8N0WQp1e8sH+dpi15on+dbHAKas5jEK4c88OoQdR8Kcyqa6Zf+XbHW?=
+ =?us-ascii?Q?V89mopgbltC5zuwxFnSfiTT5XX9H5Iu/88oNY+80DJSdTVYrjoA+QTsiDUUi?=
+ =?us-ascii?Q?P9tKLTJO4sAGyyLO99J35fNH2HoPPqnL2g3s6uZUQPEiUZDP+4lPgM9hzoin?=
+ =?us-ascii?Q?uRiuKFukG3xK3OCNGrSdCr/YslpoR/NZ21VrpM4kWpM2a3TX6vEsVkmrY8Sd?=
+ =?us-ascii?Q?ZWsIY7JXxKqp8QD/0igl3nylQL8iz3EjkScQ/tKFEGmX3KfejorvEikxFu+D?=
+ =?us-ascii?Q?++tlkeNNwb6XFSo1PdNQ2GCe1hHDeA=3D=3D?=
+MIME-Version: 1.0
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>Please download the export data by clicking on the provided link:<br><br>T=
+he link is only valid for 1 hour.<br><br>Export Data: <a href=3D"https://xx=
+vv.s3.ap-south-1.amazonaws.com/202501081156257025_Lead?X-Amz-Expires=3D3600=
+&amp;X-Amz-Algorithm=3DAWS4-HMAC-SHA256&amp;X-Amz-Credential=3DAKIAROR5KVCM=
+DKXM2YNT%2F20250108%2Fap-south-1%2Fs3%2Faws4_request&amp;X-Amz-Date=3D20250=
+108T115625Z&amp;X-Amz-SignedHeaders=3Dhost&amp;X-Amz-Signature=3Db5e3fb5159=
+ec0c084fc06f0ec8df7bb2862464bcc2c0594fee8ebd41723a4cff">Export Data</a><br>
+
