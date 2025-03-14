@@ -18,6 +18,7 @@
       <img src="http://localhost:8000/images/main-btn.svg" alt="..." />
     </button>
 
+    
     <div id="mainContainer" class="mainContainer-wrapper">
       <img src="http://localhost:8000/images/gradient-bg.svg" class="gradientBody">
       <h1 class="bot-heading">AutBot </h1>
@@ -46,6 +47,39 @@
         <div class="transcript-wrapper scrollNew">
           <div id="transcriptContainer"></div>
         </div>  
+    <div id="mainContainer">
+      <div style="width: 50%">
+        <video
+          id="agentGif"
+          src="http://localhost:8000/gifs/women.mp4"
+          muted
+          loop
+        ></video>
+      </div>
+      <div style="width: 50%">
+        <div style="display: flex; justify-content: space-between">
+          <p style="font-weight: 700">AutBot</p>
+          <p id="callEndedText" style="color: red; font-weight: 500">
+            Call Ended
+          </p>
+          <button id="crossButton" style="cursor: pointer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div id="transcriptContainer">
+          <img src="http://localhost:8000/images/chat.png" alt="" />
+        </div>
+        <div style="display: flex; justify-content: space-around">
+          <button class="widgetButtons" id="startButton">
+            <i class="fa-solid fa-phone"></i>
+          </button>
+          <button class="widgetButtons" id="muteButton">
+            <i class="fa-solid fa-microphone"></i>
+          </button>
+          <button class="widgetButtons" id="endButton">
+            <i class="fa-solid fa-phone-slash"></i>
+          </button>
+        </div>
       </div>
 
     </div>
