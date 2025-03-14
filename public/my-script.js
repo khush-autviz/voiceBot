@@ -1,7 +1,6 @@
 var sdk,
   transcript = [],
-  isMuted = false
-containerOpened = false;
+  containerOpened = false;
   isMuted = false,
   callFlag = 0;
 
@@ -46,17 +45,15 @@ containerOpened = false;
   var endButton = document.getElementById("endButton");
   var mainContainer = document.getElementById("mainContainer");
   var callEndedText = document.getElementById("callEndedText");
-  // var crossButton = document.getElementById("crossButton");
   var visibleButton = document.getElementById("visibleButton");
-  // var crossButton = document.getElementById("crossButton");
-  var agentGif = document.getElementById("agentGif");
+  // var agentGif = document.getElementById("agentGif");
   var transcriptContainer = document.getElementById("transcriptContainer");
 
   //default settings
   muteButton.disabled = true;
   endButton.disabled = true;
   callEndedText.style.display = "none";
-  // mainContainer.style.display = "none";
+  mainContainer.style.display = "none";
 
   // visble button click event
   visibleButton.addEventListener("click", () => {
@@ -68,20 +65,11 @@ containerOpened = false;
       mainContainer.style.display = "none";
       containerOpened = false;
     }
-    // visibleButton.style.display = "none";
-    mainContainer.style.display = "block";
-    visibleButton.style.display = "none";
     if (!callFlag) {
       handleCall();
     }
 
   });
-
-  //cross button click event
-  // crossButton.addEventListener("click", () => {
-  //   mainContainer.style.display = "none";
-  //   visibleButton.style.display = "block";
-  // });
 
   // start click event
   startButton.addEventListener("click", handleCall);
@@ -113,11 +101,9 @@ containerOpened = false;
   async function handleCall() {
     callFlag = 1;
     startButton.disabled = true;
-    muteButton.disabled = false;
-    endButton.disabled = false;
     callEndedText.style.display = "none";
     transcriptContainer.innerHTML = "";
-
+    
     try {
       const response = await fetch("http://localhost:8000/call", {
         method: "POST",
@@ -126,10 +112,10 @@ containerOpened = false;
         },
         body: JSON.stringify({}),
       });
-
+      
       if (!response.ok)
         throw new Error(`HTTP error! Status: ${response.status}`);
-
+      
       const data = await response.json();
       console.log("Success:", data);
       const demoStartCallConfig = {
@@ -137,27 +123,26 @@ containerOpened = false;
         sampleRate: 48000,
         emitRawAudioSamples: true,
       };
-
+      
       sdk.startCall(demoStartCallConfig).then(() => {
+        endButton.disabled = false;
+        muteButton.disabled = false;
         console.log("Call started successfully");
 
         // Agent speaking
-        sdk.on("agent_start_talking", () => {
-          agentGif.play();
-        });
+        // sdk.on("agent_start_talking", () => {
+        //   agentGif.play();
+        // });
 
-        sdk.on("agent_stop_talking", (e) => {
-          // console.log("stopp ");
-          // console.log("atalk", sdk.isAgentTalking);
+        // sdk.on("agent_stop_talking", (e) => {
+        //   // console.log("stopp ");
+        //   // console.log("atalk", sdk.isAgentTalking);
 
-          // setTimeout(() => {
-          agentGif.pause();
-          // }, 2000);
-        });
+        //   // setTimeout(() => {
+        //   agentGif.pause();
+        //   // }, 2000);
+        // });
 
-        sdk.on("audio", (audio) => {
-          console.log("audio", audio);
-        });
 
         //Trasnscript
         sdk.on("update", (update) => {
@@ -216,29 +201,7 @@ containerOpened = false;
     } catch (error) {
       console.error("Error:", error);
     }
-  });
+  };
   
-
-  //mute click event
-  muteButton.addEventListener("click", () => {
-    if (!isMuted) {
-      sdk.mute();
-      muteButton.innerHTML = `< i class= "fa-solid fa-microphone-slash" ></ > `;
-      isMuted = true;
-    } else {
-      sdk.unmute();
-      muteButton.innerHTML = `< i class= "fa-solid fa-microphone" ></ > `;
-      isMuted = false;
-    }
-  });
-
-  // end click event
-  endButton.addEventListener("click", () => {
-    sdk.stopCall();
-    callEndedText.style.display = "block";
-    startButton.disabled = false;
-    muteButton.disabled = true;
-    endButton.disabled = true;
-  });
   }
-})();
+)();
